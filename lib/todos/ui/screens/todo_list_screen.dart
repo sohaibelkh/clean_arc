@@ -5,7 +5,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:json_place_holder/todos/data/datasource/todo_source_jsonplaceholder.dart';
 import 'package:json_place_holder/todos/data/repository/todo_repository_impl.dart';
 import 'package:json_place_holder/todos/domain/usecases/get_all_todos.dart';
-import 'package:json_place_holder/todos/ui/state/cubit/todo_list_cubit.dart';
+import 'package:json_place_holder/todos/ui/state/todo_list/todo_list_cubit.dart';
 
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({required this.userId, super.key});
