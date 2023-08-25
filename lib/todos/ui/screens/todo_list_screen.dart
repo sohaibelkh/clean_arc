@@ -1,11 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:json_place_holder/todos/data/datasource/todo_source_jsonplaceholder.dart';
-import 'package:json_place_holder/todos/data/repository/todo_repository_impl.dart';
-import 'package:json_place_holder/todos/domain/usecases/get_all_todos.dart';
-import 'package:json_place_holder/todos/ui/state/cubit/todo_list_cubit.dart';
+import 'package:json_place_holder/app_dependency_tree.dart';
+import 'package:json_place_holder/todos/ui/state/todo_list/todo_list_cubit.dart';
 
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({required this.userId, super.key});
@@ -16,15 +12,7 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
-  final internetConnectionChecker = InternetConnectionChecker();
-  final dio = Dio();
-  late final sourceJsonPlaceholder = TodoSourceJsonPlaceholderImpl(dio);
-  late final repository = TodoRepositoryImpl(
-    sourceJsonPlaceholder: sourceJsonPlaceholder,
-    internetConnectionChecker: internetConnectionChecker,
-  );
-  late final UseCaseGetAllTodos usecase = UseCaseGetAllTodos(repository);
-  late final TodoListCubit _cubit = TodoListCubit(usecase);
+  late final TodoListCubit _cubit = injection<TodoListCubit>();
 
   @override
   void initState() {

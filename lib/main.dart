@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:json_place_holder/app_dependency_tree.dart';
 import 'package:json_place_holder/todos/ui/screens/todo_list_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  initAppDependencyTree();
   runApp(const MyApp());
 }
 
